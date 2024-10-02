@@ -8,6 +8,8 @@ import com.diworksdev.ecsite.dto.BuyItemDTO;
 
 public class HomeAction extends ActionSupport implements SessionAware{
 	public Map<String, Object>session;
+
+	//ログイン済み判定を行う。一度ログインしている場合はログイン認証に遷移することなく商品画面へ//
 	public String execute(){
 		String result="login";
 		if(session.containsKey("login_user_id")){
