@@ -10,7 +10,10 @@
 <meta http-equiv="imagetoolbar" content="no" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
-<title>BuyItem画面</title>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<title>BuyItemConfirm画面</title>
 <style type="text/css">
 
 /*========TAG LAYOUT========*/
@@ -56,6 +59,14 @@ table {
 	clear: both;
 }
 </style>
+
+<script type="text/javascript">
+	function submitAction(url) {
+		$('form').attr('action', url);
+		$('form').submit();
+	}
+</script>
+
 </head>
 <body>
 
@@ -69,51 +80,38 @@ table {
 		</div>
 
 		<div>
-			<s:form action="BuyItemAction">
-				<table>
+			<s:form >
 					<tr>
-						<td><span>商品名</span></td>
+						<td>商品名</td>
 						<td><s:property value="session.buyItem_name" /></td>
 					</tr>
 
 					<tr>
-						<td><span>値段</span></td>
-						<td><s:property value="session.buyItem_price" /> <span>円</span>
-						</td>
+						<td>値段</td>
+						<td><s:property value="session.total_price" /> <span>円</span></td>
 					</tr>
 
 					<tr>
-						<td><span>購入個数</span></td>
-						<td><select name="count">
-								<option value="1" selected="selected">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-								<option value="5">5</option>
-						</select></td>
+						<td>購入個数</td>
+						<td><s:property value="session.count" /> <span>個</span></td>
 					</tr>
 
 					<tr>
-						<td><span>支払い方法</span></td>
-						<td><input type="radio" name="pay" value="1"
-							checked="checked">現金払い <input type="radio" name="pay"
-							value="2">クレジットカード</td>
+						<td>支払い方法</td>
+						<td><s:property value="session.pay" /></td>
 					</tr>
+					<td><br></td>
 
 					<tr>
-						<td><s:submit value="購入" /></td>
+						<td><input type="button" value="戻る" onclick="submitAction('HomeAction')"/></td>
+						<td><input type="button" value="完了" onclick="submitAction('BuyItemConfirmAction')"/></td>
 					</tr>
-				</table>
 			</s:form>
 
-			<div>
-				<p>
-					前画面に戻る場合は<a href='<s:url action="GoHomeAction"/>'>こちら</a>
-				</p>
-				<p>
-					マイページ戻る場合は<a href='<s:url action="MyPageAction"/>'>こちら</a>
-				</p>
-			</div>
+		</div>
+		<div>
+		<p>前画面に戻る場合は<a href='<s:url action="GoHomeAction"/>'>こちら</a></p>
+		<p>マイページに戻る場合は<a href='<s:url action="MyPageAction"/>'>こちら</a></p>
 		</div>
 	</div>
 

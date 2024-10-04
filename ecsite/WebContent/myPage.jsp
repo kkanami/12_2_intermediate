@@ -10,7 +10,7 @@
 <meta http-equiv="imagetoolbar" content="no" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
-<title>BuyItem画面</title>
+<title>MyPage画面</title>
 <style type="text/css">
 
 /*========TAG LAYOUT========*/
@@ -65,54 +65,51 @@ table {
 
 	<div id="main">
 		<div id="top">
-			<p>BuyItem</p>
+			<p>MyPage</p>
 		</div>
 
 		<div>
-			<s:form action="BuyItemAction">
-				<table>
+			<s:if test="myPageList == null">
+				<h3>ご購入情報はありません。</h3>
+			</s:if>
+			<s:elseif test="message == null">
+				<h3>ご購入情報は以下になります。</h3>
+				<table border="1">
 					<tr>
-						<td><span>商品名</span></td>
-						<td><s:property value="session.buyItem_name" /></td>
+						<th>商品名</th>
+						<th>値段</th>
+						<th>購入個数</th>
+						<th>支払方法</th>
+						<th>購入日</th>
 					</tr>
-
-					<tr>
-						<td><span>値段</span></td>
-						<td><s:property value="session.buyItem_price" /> <span>円</span>
-						</td>
-					</tr>
-
-					<tr>
-						<td><span>購入個数</span></td>
-						<td><select name="count">
-								<option value="1" selected="selected">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-								<option value="5">5</option>
-						</select></td>
-					</tr>
-
-					<tr>
-						<td><span>支払い方法</span></td>
-						<td><input type="radio" name="pay" value="1"
-							checked="checked">現金払い <input type="radio" name="pay"
-							value="2">クレジットカード</td>
-					</tr>
-
-					<tr>
-						<td><s:submit value="購入" /></td>
-					</tr>
+					<s:iterator value="myPageList">
+						<tr>
+							<td><s:property value="buyItem_name" /></td>
+							<td><s:property value="total_price" /><span>円</span></td>
+							<td><s:property value="total_count" /><span>個</span></td>
+							<td><s:property value="payment" /></td>
+							<td><s:property value="insert_date" /></td>
+						</tr>
+					</s:iterator>
 				</table>
-			</s:form>
 
-			<div>
-				<p>
-					前画面に戻る場合は<a href='<s:url action="GoHomeAction"/>'>こちら</a>
-				</p>
-				<p>
-					マイページ戻る場合は<a href='<s:url action="MyPageAction"/>'>こちら</a>
-				</p>
+				<s:form action="MyPageAction">
+					<input type="hidden" name="deleteFlg" value="1">
+					<s:submit value="削除" />
+				</s:form>
+			</s:elseif>
+
+			<s:if test="message !=null">
+				<h3>
+					<s:property value="message" />
+				</h3>
+			</s:if>
+
+			<div id="text-right">
+				<p>Homeへ戻る場合は</p>
+				<a href='<s:url action="GoHomeAction"/>'>こちら</a>
+				<p>ログアウトする場合は</p>
+				<a href='<s:url action="LogoutAction"/>'>こちら</a>
 			</div>
 		</div>
 	</div>
