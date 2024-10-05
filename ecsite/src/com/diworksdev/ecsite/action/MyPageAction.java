@@ -26,7 +26,8 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 		if(deleteFlg==null){
 			String item_transaction_id=session.get("id").toString();
 			String user_master_id=session.get("login_user_id").toString();
-
+System.out.println(item_transaction_id);
+System.out.println(user_master_id);
 			myPageList=myPageDAO.getMyPageUserInfo(item_transaction_id, user_master_id);
 
 

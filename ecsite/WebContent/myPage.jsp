@@ -93,13 +93,7 @@ table {
 								<td><s:property value="insert_date" /></td>
 							</tr>
 						</s:iterator>
-						<tr>
-							<td>aaa</td>
-							<td>aaa</td>
-							<td>aaa</td>
-							<td>aaa</td>
-							<td>aaa</td>
-						</tr>
+
 				</table>
 
 				<s:form action="MyPageAction">
