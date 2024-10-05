@@ -75,22 +75,31 @@ table {
 			<s:elseif test="message == null">
 				<h3>ご購入情報は以下になります。</h3>
 				<table border="1">
-					<tr>
-						<th>商品名</th>
-						<th>値段</th>
-						<th>購入個数</th>
-						<th>支払方法</th>
-						<th>購入日</th>
-					</tr>
-					<s:iterator value="myPageList">
+					<thead>
 						<tr>
-							<td><s:property value="buyItem_name" /></td>
-							<td><s:property value="total_price" /><span>円</span></td>
-							<td><s:property value="total_count" /><span>個</span></td>
-							<td><s:property value="payment" /></td>
-							<td><s:property value="insert_date" /></td>
+							<th>商品名</th>
+							<th>値段</th>
+							<th>購入個数</th>
+							<th>支払方法</th>
+							<th>購入日</th>
 						</tr>
-					</s:iterator>
+
+						<s:iterator value="myPageList">
+							<tr>
+								<td><s:property value="itemName" /></td>
+								<td><s:property value="totalPrice" /><span>円</span></td>
+								<td><s:property value="totalCount" /><span>個</span></td>
+								<td><s:property value="payment" /></td>
+								<td><s:property value="insert_date" /></td>
+							</tr>
+						</s:iterator>
+						<tr>
+							<td>aaa</td>
+							<td>aaa</td>
+							<td>aaa</td>
+							<td>aaa</td>
+							<td>aaa</td>
+						</tr>
 				</table>
 
 				<s:form action="MyPageAction">
